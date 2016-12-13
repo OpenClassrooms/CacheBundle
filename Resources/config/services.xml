@@ -14,9 +14,9 @@
             </call>
         </service>
         <service id="openclassrooms.cache.cache_provider"
-                 class="%openclassrooms.cache.cache_provider_factory.class%"
-                 factory-service="openclassrooms.cache.cache_provider_factory"
-                 factory-method="create"/>
+                 class="%openclassrooms.cache.cache_provider_factory.class%">
+            <factory service="openclassrooms.cache.cache_provider_factory" method="create" />
+        </service>
         <service id="openclassrooms.cache.cache" class="%openclassrooms.cache.cache.class%">
             <argument type="service" id="openclassrooms.cache.cache_provider"/>
         </service>
