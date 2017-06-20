@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->arrayNode('provider')
+                ->performNoDeepMerging()
                 ->beforeNormalization()
                     ->ifString()
                     ->then(function($v) { return array($v => array()); })
