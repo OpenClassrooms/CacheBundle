@@ -39,17 +39,6 @@ class OpenClassroomsCacheExtension extends Extension
         );
 
         switch (key($provider)) {
-            case CacheProviderType::MEMCACHE:
-                $providerConfig = $provider[CacheProviderType::MEMCACHE];
-                $container->setParameter('openclassrooms.cache.provider_host', $providerConfig['host']);
-                $container->setParameter('openclassrooms.cache.provider_port', $providerConfig['port']);
-                $container->setParameter('openclassrooms.cache.provider_timeout', $providerConfig['timeout']);
-                break;
-            case CacheProviderType::MEMCACHED:
-                $providerConfig = $provider[CacheProviderType::MEMCACHED];
-                $container->setParameter('openclassrooms.cache.provider_host', $providerConfig['host']);
-                $container->setParameter('openclassrooms.cache.provider_port', $providerConfig['port']);
-                break;
             case CacheProviderType::REDIS:
                 $providerConfig = $provider[CacheProviderType::REDIS];
                 $container->setParameter('openclassrooms.cache.provider_host', $providerConfig['host']);

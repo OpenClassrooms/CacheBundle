@@ -29,8 +29,6 @@ class Configuration implements ConfigurationInterface
                 ->end()
                     ->children()
                         ->append($this->addArrayNode())
-                        ->append($this->addMemcacheNode())
-                        ->append($this->addMemcachedNode())
                         ->append($this->addRedisNode())
                     ->end()
                 ->end()
@@ -51,43 +49,6 @@ class Configuration implements ConfigurationInterface
     {
         $builder = new TreeBuilder();
         $node = $builder->root('array');
-
-        return $node;
-    }
-
-    /**
-     * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder
-     */
-    private function addMemcacheNode()
-    {
-        $nodeBuilder = new TreeBuilder();
-        $node = $nodeBuilder->root('memcache');
-
-        $node
-            ->addDefaultsIfNotSet()
-            ->children()
-                ->scalarNode('host')->end()
-                ->scalarNode('port')->defaultValue(11211)->end()
-                ->scalarNode('timeout')->defaultValue(0)->end()
-            ->end();
-
-        return $node;
-    }
-
-    /**
-     * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder
-     */
-    private function addMemcachedNode()
-    {
-        $nodeBuilder = new TreeBuilder();
-        $node = $nodeBuilder->root('memcached');
-
-        $node
-            ->addDefaultsIfNotSet()
-            ->children()
-                ->scalarNode('host')->end()
-                ->scalarNode('port')->defaultValue(1121)->end()
-            ->end();
 
         return $node;
     }

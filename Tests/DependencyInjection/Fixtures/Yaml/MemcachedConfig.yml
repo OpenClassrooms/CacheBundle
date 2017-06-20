@@ -1,5 +1,0 @@
-open_classrooms_cache:
-    provider:
-        memcached:
-            host: localhost
-            port: 11211

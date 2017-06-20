@@ -74,36 +74,6 @@ class YamlOpenClassroomsCacheExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function MemcacheConfiguration_ContainerHasMemcacheCache()
-    {
-        $this->loader->load('MemcacheConfig.yml');
-        $this->container->compile();
-
-        $cacheProvider = $this->container->get('openclassrooms.cache.cache_provider');
-        $this->assertInstanceOf('Doctrine\Common\Cache\MemcacheCache', $cacheProvider);
-
-        $cache = $this->container->get('openclassrooms.cache.cache');
-        $this->assertAttributeInstanceOf('Doctrine\Common\Cache\MemcacheCache', 'cache', $cache);
-    }
-
-    /**
-     * @test
-     */
-    public function MemcachedConfiguration_ContainerHasMemcachedCache()
-    {
-        $this->loader->load('MemcachedConfig.yml');
-        $this->container->compile();
-
-        $cacheProvider = $this->container->get('openclassrooms.cache.cache_provider');
-        $cache = $this->container->get('openclassrooms.cache.cache');
-
-        $this->assertInstanceOf('Doctrine\Common\Cache\MemcachedCache', $cacheProvider);
-        $this->assertAttributeInstanceOf('Doctrine\Common\Cache\MemcachedCache', 'cache', $cache);
-    }
-
-    /**
-     * @test
-     */
     public function RedisConfiguration_ContainerHasRedisCache()
     {
         $this->loader->load('RedisConfig.yml');
