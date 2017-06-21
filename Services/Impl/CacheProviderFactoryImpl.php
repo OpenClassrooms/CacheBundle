@@ -25,21 +25,6 @@ class CacheProviderFactoryImpl implements CacheProviderFactory
         $cacheProviderBuilder = $this->container->get('openclassrooms.cache.cache_provider_builder');
 
         switch ($this->container->getParameter('openclassrooms.cache.cache_provider_type')) {
-            case CacheProviderType::MEMCACHE:
-                $cacheProvider = $cacheProviderBuilder
-                    ->create(CacheProviderType::MEMCACHE)
-                    ->withHost($this->container->getParameter('openclassrooms.cache.provider_host'))
-                    ->withPort($this->container->getParameter('openclassrooms.cache.provider_port'))
-                    ->withTimeout($this->container->getParameter('openclassrooms.cache.provider_timeout'))
-                    ->build();
-                break;
-            case CacheProviderType::MEMCACHED:
-                $cacheProvider = $cacheProviderBuilder
-                    ->create(CacheProviderType::MEMCACHED)
-                    ->withHost($this->container->getParameter('openclassrooms.cache.provider_host'))
-                    ->withPort($this->container->getParameter('openclassrooms.cache.provider_port'))
-                    ->build();
-                break;
             case CacheProviderType::REDIS:
                 $cacheProvider = $cacheProviderBuilder
                     ->create(CacheProviderType::REDIS)

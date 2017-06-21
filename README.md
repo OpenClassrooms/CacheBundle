@@ -43,17 +43,6 @@ open_classrooms_cache:
 # Providers
     # array
     provider: array
-    # memcache
-    provider:
-        memcache:
-            host: localhost
-            port: 11211     (optional, default = 11211)
-            timeout: 0      (optional, default = 0)
-    # memcached
-    provider:
-        memcached:
-            host: localhost
-            port: 11211     (optional, default = 11211)
     # redis            
     provider:
         redis:

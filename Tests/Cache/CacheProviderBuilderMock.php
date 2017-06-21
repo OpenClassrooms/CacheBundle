@@ -3,11 +3,7 @@
 namespace OpenClassrooms\Bundle\CacheBundle\Tests\Cache;
 
 use Doctrine\Common\Cache\ArrayCache;
-use Doctrine\Common\Cache\MemcacheCache;
-use Doctrine\Common\Cache\MemcachedCache;
 use Doctrine\Common\Cache\RedisCache;
-use OpenClassrooms\Bundle\CacheBundle\Tests\Cache\CacheServer\MemcachedSpy;
-use OpenClassrooms\Bundle\CacheBundle\Tests\Cache\CacheServer\MemcacheSpy;
 use OpenClassrooms\Bundle\CacheBundle\Tests\Cache\CacheServer\RedisSpy;
 use OpenClassrooms\Cache\CacheProvider\CacheProviderBuilder;
 use OpenClassrooms\Cache\CacheProvider\CacheProviderBuilderImpl;
@@ -26,14 +22,7 @@ class CacheProviderBuilderMock extends CacheProviderBuilderImpl
     {
         $this->cacheProviderType = $cacheProviderType;
         switch ($this->cacheProviderType) {
-            case CacheProviderType::MEMCACHE:
-                $this->cacheProvider = new MemcacheCache();
-                $this->server = new MemcacheSpy();
-                break;
-            case CacheProviderType::MEMCACHED:
-                $this->cacheProvider = new MemcachedCache();
-                $this->server = new MemcachedSpy();
-                break;
+
             case CacheProviderType::REDIS:
                 $this->cacheProvider = new RedisCache();
                 $this->server = new RedisSpy();

@@ -1,6 +1,0 @@
-open_classrooms_cache:
-    provider:
-        memcache:
-            host: localhost
-            port: 11211
-            timeout: 0
