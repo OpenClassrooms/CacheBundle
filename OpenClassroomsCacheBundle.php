@@ -11,11 +11,5 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class OpenClassroomsCacheBundle extends Bundle
 {
-    public function build(ContainerBuilder $container)
-    {
-        parent::build($container);
-
-        $container->addCompilerPass(new AddDefaultLifetimePass());
-    }
 
 }

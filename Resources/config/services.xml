@@ -19,6 +19,9 @@
         </service>
         <service id="openclassrooms.cache.cache" class="%openclassrooms.cache.cache.class%">
             <argument type="service" id="openclassrooms.cache.cache_provider"/>
+            <call method="setDefaultLifetime">
+                <argument type="string">%openclassrooms.cache.default_lifetime%</argument>
+            </call>
         </service>
     </services>
 
