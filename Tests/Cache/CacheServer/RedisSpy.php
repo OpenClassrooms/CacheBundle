@@ -22,7 +22,7 @@ class RedisSpy extends \Redis
      */
     public $timeout;
 
-    public function connect($host, $port = 6379, $timeout = 0.0)
+    public function connect($host, $port = 6379, $timeout = 0.0, $retry_interval = null)
     {
         $this->host = $host;
         $this->port = $port;

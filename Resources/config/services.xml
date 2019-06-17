@@ -7,17 +7,17 @@
     </parameters>
 
     <services>
-        <service id="openclassrooms.cache.cache_provider_builder" class="%openclassrooms.cache.cache_provider_builder.class%"/>
+        <service id="openclassrooms.cache.cache_provider_builder" class="%openclassrooms.cache.cache_provider_builder.class%" public="true"/>
         <service id="openclassrooms.cache.cache_provider_factory" class="%openclassrooms.cache.cache_provider_factory.class%">
             <call method="setContainer">
                 <argument type="service" id="service_container"/>
             </call>
         </service>
         <service id="openclassrooms.cache.cache_provider"
-                 class="%openclassrooms.cache.cache_provider_factory.class%">
+                 class="%openclassrooms.cache.cache_provider_factory.class%" public="true">
             <factory service="openclassrooms.cache.cache_provider_factory" method="create" />
         </service>
-        <service id="openclassrooms.cache.cache" class="%openclassrooms.cache.cache.class%">
+        <service id="openclassrooms.cache.cache" class="%openclassrooms.cache.cache.class%" public="true">
             <argument type="service" id="openclassrooms.cache.cache_provider"/>
             <call method="setDefaultLifetime">
                 <argument type="string">%openclassrooms.cache.default_lifetime%</argument>
