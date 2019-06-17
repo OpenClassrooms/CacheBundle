@@ -4,6 +4,7 @@ namespace OpenClassrooms\Bundle\CacheBundle\Tests\DependencyInjection;
 
 use OpenClassrooms\Bundle\CacheBundle\DependencyInjection\OpenClassroomsCacheExtension;
 use OpenClassrooms\Bundle\CacheBundle\OpenClassroomsCacheBundle;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -12,17 +13,17 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class YamlOpenClassroomsCacheExtensionTest extends \PHPUnit_Framework_TestCase
+class YamlOpenClassroomsCacheExtensionTest extends TestCase
 {
-    /**
-     * @var Extension
-     */
-    private $extension;
-
     /**
      * @var ContainerBuilder
      */
     private $container;
+
+    /**
+     * @var Extension
+     */
+    private $extension;
 
     /**
      * @var YamlFileLoader
@@ -56,6 +57,7 @@ class YamlOpenClassroomsCacheExtensionTest extends \PHPUnit_Framework_TestCase
 
         $this->assertAttributeEquals(10, 'defaultLifetime', $cache);
     }
+
     /**
      * @test
      */
@@ -96,7 +98,10 @@ class YamlOpenClassroomsCacheExtensionTest extends \PHPUnit_Framework_TestCase
         $bundle = new OpenClassroomsCacheBundle();
         $bundle->build($this->container);
 
-        $this->container->setParameter('openclassrooms.cache.cache_provider_builder.class', 'OpenClassrooms\Bundle\CacheBundle\Tests\Cache\CacheProviderBuilderMock');
+        $this->container->setParameter(
+            'openclassrooms.cache.cache_provider_builder.class',
+            'OpenClassrooms\Bundle\CacheBundle\Tests\Cache\CacheProviderBuilderMock'
+        );
         $this->loader = new YamlFileLoader($this->container, new FileLocator(__DIR__ . '/Fixtures/Yaml/'));
     }
 }
