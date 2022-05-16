@@ -2,20 +2,13 @@
 
 namespace OpenClassrooms\Bundle\CacheBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-/**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
- */
 class Configuration implements ConfigurationInterface
 {
-    /**
-     * Generates the configuration tree builder.
-     *
-     * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder The tree builder
-     */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('openclassrooms_cache');
         $rootNode = $treeBuilder->getRootNode();
@@ -42,24 +35,15 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    /**
-     * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder
-     */
-    private function addArrayNode()
+    private function addArrayNode(): NodeDefinition
     {
-        $builder = new TreeBuilder();
-        $node = $builder->root('array');
-
-        return $node;
+        return (new TreeBuilder('array'))->getRootNode();
     }
 
-    /**
-     * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder
-     */
-    private function addRedisNode()
+    private function addRedisNode(): NodeDefinition
     {
-        $nodeBuilder = new TreeBuilder();
-        $node = $nodeBuilder->root('redis');
+        $nodeBuilder = new TreeBuilder('redis');
+        $node = $nodeBuilder->getRootNode();
 
         $node
             ->addDefaultsIfNotSet()
