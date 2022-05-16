@@ -14,7 +14,7 @@ See [OpenClassrooms/Cache](https://github.com/OpenClassrooms/Cache) for more det
 ## Installation
 This bundle can be installed using composer:
 
-```composer require jms/serializer-bundle```
+```composer require openclassrooms/cache-bundle```
 or by adding the package to the composer.json file directly.
 
 ```json
