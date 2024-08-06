@@ -20,7 +20,7 @@
     },
     "require": {
         "php": ">=8.2",
-        "openclassrooms/cache": "1.0.*@dev",
+        "openclassrooms/cache": "^v1.1.0",
         "symfony/dependency-injection": "~5.4 || ~6.4 || ~v7.1",
         "symfony/config": "~5.4 || ~6.4 || ~v7.1",
         "symfony/http-kernel": "~5.4 || ~6.4 || ~v7.1"
